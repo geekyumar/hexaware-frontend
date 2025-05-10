@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Create Reports - Hexaware</title>
+  <title>Edit Report - Hexaware</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -717,7 +717,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><b>My Complaints</b></h1>
+            <h1><b>Complaint Submission</b></h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -732,160 +732,133 @@
         <div class="card card-default">
           
           <!-- /.card-header -->
-          <form method="post" action="{{ url('/jobs/create') }}">
-            
-            <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label for="upcomingInterviews">Upcoming Interviews</label>
-                      <input type="text" class="form-control" id="upcomingInterviews" name="upcoming_interviews" value="5" readonly>
-                    </div>
-                  </div>
-                </div>
-              
-                <div class="row">
-                  <div class="col-md-12">
-                    <label class="pt-2">Interviews List Table</label>
-                    <div class="card-body table-responsive p-0 pt-2">
-                      <table class="table table-hover text-nowrap">
-                        <thead>
-                          <tr>
-                            <th>Applicant Name</th>
-                            <th>Job Title</th>
-                            <th>Interview Date</th>
-                            <th>Interview Time</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <!-- Example Row 1 -->
-                          <tr>
-                            <td>John Doe</td>
-                            <td>Software Engineer</td>
-                            <td>2024-09-25</td>
-                            <td>10:00 AM</td>
-                            <td>Scheduled</td>
-                            <td>
-                              <div class="btn-group">
-                                <a href="http://localhost:8000/interviews/view/1" class="btn btn-primary btn-sm">View</a>
-                                <a href="http://localhost:8000/interviews/reschedule/1" class="btn btn-primary btn-sm">Reschedule</a>
-                                <a href="http://localhost:8000/interviews/cancel/1" class="btn btn-primary btn-sm">Cancel</a>
-                              </div>
-                            </td>
-                          </tr>
-                          <!-- Example Row 2 -->
-                          <tr>
-                            <td>Jane Smith</td>
-                            <td>Data Analyst</td>
-                            <td>2024-09-26</td>
-                            <td>2:00 PM</td>
-                            <td>Scheduled</td>
-                            <td>
-                              <div class="btn-group">
-                                <a href="http://localhost:8000/interviews/view/2" class="btn btn-primary btn-sm">View</a>
-                                <a href="http://localhost:8000/interviews/reschedule/2" class="btn btn-primary btn-sm">Reschedule</a>
-                                <a href="http://localhost:8000/interviews/cancel/2" class="btn btn-primary btn-sm">Cancel</a>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              
-              
-              <!-- Save Form Button -->
-              <div class="form-group">
-                <div class="row mt-3">
-                  <div class="col-md-12 d-flex justify-content-center">
-                    <!-- Updated button label only -->
-                    <button type="button" class="btn btn-primary btn-sm">
-                      Schedule New Interview
-                    </button>
-                  </div>
-                </div>
-              </div>
-              
-                
-              </div>
-            </div>
-          </form>
-          
-          
-
-              
-                <!--<!--<label>Position</label>
-                  <select class="select2" data-placeholder="Select a Department" name="position" style="width: 100%;">
-                    <option disabled selected>Select Position</option>
-                    <option>HR</option>
-                    <option>IT (Developer)</option>
-                    <option>Marketing</option>
-                    <option>Sales</option>
-                    <option>Finance</option>
-                    <option>Auditing</option>
-                  </select>
-                </div>
-                 /.form-group -->
-
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-            </div>
-            <!--<div class="row">
-              <div class="col-md-6">
-              <div class="form-group">
+        <form method="post" action="{{ url('/complaints/create') }}" enctype="multipart/form-data">
+    <div class="card-body">
+        <div class="row">
+            <!-- Complaint Type Dropdown -->
+            <div class="col-md-6">
                 <div class="form-group">
-                  <label>Source</label>
-                  <select class="form-control select2" data-placeholder="Select an Employment Type" name="employment_type" style="width: 100%;">
-                    <option selected disabled>Select Source</option>
-                    <option>Job Board</option>
-                    <option>Referral</option>
-                  </select>
+                    <label>Complaint Type</label>
+                    <select class="form-control select2" name="complaint_type" style="width: 100%;" required>
+                        <option disabled selected>Select a complaint type</option>
+                        <option>Water</option>
+                        <option>Road</option>
+                        <option>Electricity</option>
+                        <option>Sanitation</option>
+                        
+                    </select>
                 </div>
             </div>
-                <!-- /.form-group -->
-                <!--<br>
-                  <div class="form-group">
-                    <label for="fieldsToInclude">Fields to Include</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="applicantName" name="fieldsToInclude[]" value="applicantName">
-                        <label class="form-check-label" for="applicantName">
-                            Applicant Name
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="dateApplied" name="fieldsToInclude[]" value="dateApplied">
-                        <label class="form-check-label" for="dateApplied">
-                            Date Applied
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="status" name="fieldsToInclude[]" value="status">
-                        <label class="form-check-label" for="status">
-                            Status
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="source" name="fieldsToInclude[]" value="source">
-                        <label class="form-check-label" for="source">
-                            Source
-                        </label>
-                    </div>
+
+            <!-- District Dropdown -->
+            <!-- District Dropdown -->
+<div class="col-md-6">
+    <div class="form-group">
+        <label>District</label>
+        <select class="form-control select2" name="district" style="width: 100%;" required>
+            <option disabled selected>Select a district</option>
+            <option>Ariyalur</option>
+            <option>Chengalpattu</option>
+            <option>Chennai</option>
+            <option>Coimbatore</option>
+            <option>Cuddalore</option>
+            <option>Dharmapuri</option>
+            <option>Dindigul</option>
+            <option>Erode</option>
+            <option>Kallakurichi</option>
+            <option>Kancheepuram</option>
+            <option>Karur</option>
+            <option>Krishnagiri</option>
+            <option>Madurai</option>
+            <option>Mayiladuthurai</option>
+            <option>Nagapattinam</option>
+            <option>Namakkal</option>
+            <option>Nilgiris</option>
+            <option>Perambalur</option>
+            <option>Pudukkottai</option>
+            <option>Ramanathapuram</option>
+            <option>Ranipet</option>
+            <option>Salem</option>
+            <option>Sivaganga</option>
+            <option>Tenkasi</option>
+            <option>Thanjavur</option>
+            <option>Theni</option>
+            <option>Thoothukudi (Tuticorin)</option>
+            <option>Tiruchirappalli</option>
+            <option>Tirunelveli</option>
+            <option>Tirupathur</option>
+            <option>Tiruppur</option>
+            <option>Tiruvallur</option>
+            <option>Tiruvannamalai</option>
+            <option>Tiruvarur</option>
+            <option>Vellore</option>
+            <option>Viluppuram</option>
+            <option>Virudhunagar</option>
+        </select>
+    </div>
+</div>
+
+
+            <!-- Town/City -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Town/City</label>
+                    <input type="text" class="form-control" name="town" placeholder="Enter town or city name" required>
                 </div>
+            </div>
+
+            <!-- Pin Code -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Pin Code</label>
+                    <input type="text" class="form-control" name="pin_code" placeholder="Enter pin code" pattern="\d{5,6}" required>
+                </div>
+            </div>
+
+            <!-- Street Name -->
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Street Name</label>
+                    <input type="text" class="form-control" name="street" placeholder="Enter street name">
+                </div>
+            </div>
+
+            <!-- Location Link -->
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Google Maps Location Link</label>
+                    <input type="url" class="form-control" name="location_link" placeholder="Paste Google Maps link to the location">
+                </div>
+            </div>
+
+            <!-- Complaint Description -->
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Complaint Description</label>
+                    <textarea class="form-control" name="description" rows="4" placeholder="Enter complaint details" required></textarea>
+                </div>
+            </div>
+
+            <!-- File Upload -->
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Upload File (Optional)</label>
+                    <input type="file" class="form-control-file" name="attachment">
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-md-12 text-right">
+                <button type="submit" class="btn btn-primary">Submit Complaint</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+            
                 <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-              <!-- /.col -->
-            </div>
-            <br>
-            <!--<div class="card-footer">
-              <button type="submit" class="btn btn-primary">Generate Report</button>
-            </div>
+                
             <!-- /.row -->
 
             <!-- /.row -->
@@ -1095,4 +1068,4 @@
   // DropzoneJS Demo Code End
 </script>
 </body>
-</html>-->
+</html>

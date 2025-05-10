@@ -717,7 +717,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><b>My Complaints</b></h1>
+            <h1><b>Admin Dashboard</b></h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -732,90 +732,112 @@
         <div class="card card-default">
           
           <!-- /.card-header -->
-          <form method="post" action="{{ url('/jobs/create') }}">
-            
-            <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label for="upcomingInterviews">Upcoming Interviews</label>
-                      <input type="text" class="form-control" id="upcomingInterviews" name="upcoming_interviews" value="5" readonly>
-                    </div>
-                  </div>
-                </div>
-              
-                <div class="row">
-                  <div class="col-md-12">
-                    <label class="pt-2">Interviews List Table</label>
-                    <div class="card-body table-responsive p-0 pt-2">
-                      <table class="table table-hover text-nowrap">
-                        <thead>
-                          <tr>
-                            <th>Applicant Name</th>
-                            <th>Job Title</th>
-                            <th>Interview Date</th>
-                            <th>Interview Time</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <!-- Example Row 1 -->
-                          <tr>
-                            <td>John Doe</td>
-                            <td>Software Engineer</td>
-                            <td>2024-09-25</td>
-                            <td>10:00 AM</td>
-                            <td>Scheduled</td>
-                            <td>
-                              <div class="btn-group">
-                                <a href="http://localhost:8000/interviews/view/1" class="btn btn-primary btn-sm">View</a>
-                                <a href="http://localhost:8000/interviews/reschedule/1" class="btn btn-primary btn-sm">Reschedule</a>
-                                <a href="http://localhost:8000/interviews/cancel/1" class="btn btn-primary btn-sm">Cancel</a>
-                              </div>
-                            </td>
-                          </tr>
-                          <!-- Example Row 2 -->
-                          <tr>
-                            <td>Jane Smith</td>
-                            <td>Data Analyst</td>
-                            <td>2024-09-26</td>
-                            <td>2:00 PM</td>
-                            <td>Scheduled</td>
-                            <td>
-                              <div class="btn-group">
-                                <a href="http://localhost:8000/interviews/view/2" class="btn btn-primary btn-sm">View</a>
-                                <a href="http://localhost:8000/interviews/reschedule/2" class="btn btn-primary btn-sm">Reschedule</a>
-                                <a href="http://localhost:8000/interviews/cancel/2" class="btn btn-primary btn-sm">Cancel</a>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              
-              
-              <!-- Save Form Button -->
-              <div class="form-group">
-                <div class="row mt-3">
-                  <div class="col-md-12 d-flex justify-content-center">
-                    <!-- Updated button label only -->
-                    <button type="button" class="btn btn-primary btn-sm">
-                      Schedule New Interview
-                    </button>
-                  </div>
-                </div>
-              </div>
-              
-                
-              </div>
-            </div>
-          </form>
+           
           
+<form method="post" action="{{ url('/complaints/update') }}">
+  <div class="card-body">
+
+    <!-- Complaints Table -->
+    <div class="row">
+      <div class="col-md-12">
+        <label class="pt-2">Complaints List Table</label>
+        <div class="card-body table-responsive p-0 pt-2">
+          <table class="table table-hover text-nowrap">
+            <thead>
+              <tr>
+                <th>Complaint ID</th>
+                <th>User Name</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Remark</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Example Row 1 -->
+              <tr>
+                <td>CMP001</td>
+                <td>John Doe</td>
+                <td>Water</td>
+                <td>2024-09-25</td>
+                <td>In Progress</td>
+                <td>Being fixed</td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-primary" onclick="toggleEdit('cmp001')">Edit</button>
+                </td>
+              </tr>
+              <tr id="edit-row-cmp001" style="display: none;">
+                <td colspan="7">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <select class="form-control" name="status_cmp001">
+                        <option selected disabled>Update Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                      </select>
+                    </div>
+                    <div class="col-md-5">
+                      <input type="text" class="form-control" name="remark_cmp001" placeholder="Enter your remark">
+                    </div>
+                    <div class="col-md-3">
+                      <button type="submit" class="btn btn-success btn-sm">Update</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Example Row 2 -->
+              <tr>
+                <td>CMP002</td>
+                <td>Jane Smith</td>
+                <td>Electricity</td>
+                <td>2024-09-24</td>
+                <td>Resolved</td>
+                <td>Issue closed</td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-primary" onclick="toggleEdit('cmp002')">Edit</button>
+                </td>
+              </tr>
+              <tr id="edit-row-cmp002" style="display: none;">
+                <td colspan="7">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <select class="form-control" name="status_cmp002">
+                        <option selected disabled>Update Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                      </select>
+                    </div>
+                    <div class="col-md-5">
+                      <input type="text" class="form-control" name="remark_cmp002" placeholder="Enter your remark">
+                    </div>
+                    <div class="col-md-3">
+                      <button type="submit" class="btn btn-success btn-sm">Update</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- More rows dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+<!-- Toggle edit row JavaScript -->
+<script>
+  function toggleEdit(id) {
+    var row = document.getElementById('edit-row-' + id);
+    row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+  }
+</script>
+
           
 
               

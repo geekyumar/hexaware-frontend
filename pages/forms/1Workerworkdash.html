@@ -717,7 +717,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><b>My Complaints</b></h1>
+            <h1><b>Work Assigned</b></h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -732,90 +732,63 @@
         <div class="card card-default">
           
           <!-- /.card-header -->
-          <form method="post" action="{{ url('/jobs/create') }}">
-            
-            <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label for="upcomingInterviews">Upcoming Interviews</label>
-                      <input type="text" class="form-control" id="upcomingInterviews" name="upcoming_interviews" value="5" readonly>
-                    </div>
-                  </div>
-                </div>
-              
-                <div class="row">
-                  <div class="col-md-12">
-                    <label class="pt-2">Interviews List Table</label>
-                    <div class="card-body table-responsive p-0 pt-2">
-                      <table class="table table-hover text-nowrap">
-                        <thead>
-                          <tr>
-                            <th>Applicant Name</th>
-                            <th>Job Title</th>
-                            <th>Interview Date</th>
-                            <th>Interview Time</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <!-- Example Row 1 -->
-                          <tr>
-                            <td>John Doe</td>
-                            <td>Software Engineer</td>
-                            <td>2024-09-25</td>
-                            <td>10:00 AM</td>
-                            <td>Scheduled</td>
-                            <td>
-                              <div class="btn-group">
-                                <a href="http://localhost:8000/interviews/view/1" class="btn btn-primary btn-sm">View</a>
-                                <a href="http://localhost:8000/interviews/reschedule/1" class="btn btn-primary btn-sm">Reschedule</a>
-                                <a href="http://localhost:8000/interviews/cancel/1" class="btn btn-primary btn-sm">Cancel</a>
-                              </div>
-                            </td>
-                          </tr>
-                          <!-- Example Row 2 -->
-                          <tr>
-                            <td>Jane Smith</td>
-                            <td>Data Analyst</td>
-                            <td>2024-09-26</td>
-                            <td>2:00 PM</td>
-                            <td>Scheduled</td>
-                            <td>
-                              <div class="btn-group">
-                                <a href="http://localhost:8000/interviews/view/2" class="btn btn-primary btn-sm">View</a>
-                                <a href="http://localhost:8000/interviews/reschedule/2" class="btn btn-primary btn-sm">Reschedule</a>
-                                <a href="http://localhost:8000/interviews/cancel/2" class="btn btn-primary btn-sm">Cancel</a>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              
-              
-              <!-- Save Form Button -->
-              <div class="form-group">
-                <div class="row mt-3">
-                  <div class="col-md-12 d-flex justify-content-center">
-                    <!-- Updated button label only -->
-                    <button type="button" class="btn btn-primary btn-sm">
-                      Schedule New Interview
-                    </button>
-                  </div>
-                </div>
-              </div>
-              
-                
-              </div>
-            </div>
-          </form>
-          
+           
+    <form method="get" action="{{ url('/worker/assigned-work') }}">
+  <div class="card-body">
+
+    <!-- Page Title -->
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <h5>My Assigned Complaints</h5>
+      </div>
+    </div>
+
+    <!-- Assigned Work Table -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-body table-responsive p-0 pt-2">
+          <table class="table table-hover text-nowrap">
+            <thead>
+              <tr>
+                <th>Complaint ID</th>
+                <th>Complaint Type</th>
+                <th>User Name</th>
+                <th>Instructions</th>
+                <th>Assigned Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Example Row 1 -->
+              <tr>
+                <td>CMP005</td>
+                <td>Road</td>
+                <td>Ravi Kumar</td>
+                <td>Fill potholes on main road</td>
+                <td>2024-09-27</td>
+              </tr>
+
+              <!-- Example Row 2 -->
+              <tr>
+                <td>CMP006</td>
+                <td>Electricity</td>
+                <td>Meena Devi</td>
+                <td>Replace street light bulb</td>
+                <td>2024-09-26</td>
+              </tr>
+
+              <!-- More rows dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+      
+
+
+
           
 
               
